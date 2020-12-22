@@ -1,4 +1,4 @@
-#include <stdlib.h>
+#include <stdlib-helper.h>
 #include "vertex.h"
 
 VertexPtr buildVertex(double x, double y, double z) {
