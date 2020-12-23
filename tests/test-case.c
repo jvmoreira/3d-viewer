@@ -5,7 +5,7 @@
 #define SUCCESS_COLOR "1;32m"
 
 int errorCount = 0;
-extern unsigned long mallocCount;
+unsigned long mallocCount;
 
 void setErrorMode() {
     printf("\x1b[%s", ERROR_COLOR);
@@ -30,13 +30,15 @@ void test(int subject, const char* message) {
     resetColorMode();
 }
 
-void printTestResults() {
+int printTestResults() {
     test(!mallocCount, "The number of calls for malloc should be equal to the number of calls of free");
 
     if(errorCount)
-        return;
+        return 1;
 
     setSuccessMode();
     printf("Test suite succeeded.\n\n");
     resetColorMode();
+
+    return 0;
 }

@@ -5,7 +5,5 @@ int main() {
 
     runVertexTests();
 
-    printTestResults();
-
-    return 0;
+    return printTestResults();
 }
