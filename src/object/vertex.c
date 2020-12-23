@@ -1,4 +1,5 @@
-#include <stdlib-helper.h>
+#include <stdlib.h>
+#include "stdlib-helper.h"
 #include "vertex.h"
 
 VertexPtr buildVertex(double x, double y, double z) {
@@ -9,4 +10,8 @@ VertexPtr buildVertex(double x, double y, double z) {
     vertex->z = z;
 
     return vertex;
+}
+
+void destroyVertex(VertexPtr vertex) {
+    free(vertex);
 }

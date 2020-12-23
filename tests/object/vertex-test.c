@@ -15,4 +15,6 @@ void buildVertexTest() {
     test(vertex != NULL, "buildVertex returns a valid vertex pointer");
     int assertCoordinates = vertex->x == vertexX && vertex->y == vertexY && vertex->z == vertexZ;
     test(assertCoordinates, "buildVertex should set vertex's coordinate correctly");
+
+    destroyVertex(vertex);
 }

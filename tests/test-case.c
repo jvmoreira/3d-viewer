@@ -5,7 +5,7 @@
 #define SUCCESS_COLOR "1;32m"
 
 int errorCount = 0;
-extern int mallocCount;
+extern unsigned long mallocCount;
 
 void setErrorMode() {
     printf("\x1b[%s", ERROR_COLOR);
