@@ -3,6 +3,4 @@
 
 void runVertexTests();
 
-void buildVertexTest();
-
 #endif //INC_3D_VIEWER_TESTS_VERTEX_TEST_H
