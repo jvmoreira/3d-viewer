@@ -1,25 +1,52 @@
 #ifndef INC_3D_VIEWER_VERTEX_H
 #define INC_3D_VIEWER_VERTEX_H
 
-#include <stdlib.h>
+#include <vector>
+using namespace std;
 
-struct Vertex;
-struct Edge;
 
-typedef struct Edge {
-    struct Vertex *vertex;
-    struct Edge *next;
-} Edge, *EdgePtr;
+class Vertex {
+private:
+    struct Edge {
+        Vertex &vertex;
+    };
+    struct Coordinate {
+        double x, y, z;
+    };
+    unsigned int _id;
+    Coordinate coordinate;
+    vector<Edge> edges;
 
-typedef struct Vertex {
-    double x, y, z;
-    unsigned int id;
-    EdgePtr edges;
-    unsigned int numberOfEdges;
-} Vertex, *VertexPtr;
+    void handleNewEdge(Vertex &destiny);
+    bool hasEdgeWith(Vertex &destiny) const;
+    Vertex &resolveEdgeOrigin(Vertex &vertex);
+    Vertex &resolveEdgeDestiny(Vertex &vertex);
 
-VertexPtr buildVertex(unsigned int id, double x, double y, double z);
-void createEdgeBetweenVertexes(VertexPtr vertexA, VertexPtr vertexB);
-void destroyVertex(VertexPtr vertex);
+public:
+    Vertex(
+        unsigned int id,
+        double x, double y, double z
+    ): _id(id), coordinate({x, y, z}) {};
+    unsigned int getId() const { return _id; }
+
+    double getX() const { return coordinate.x; }
+    double getY() const { return coordinate.y; }
+    double getZ() const { return coordinate.z; }
+    const Coordinate &getCoordinate() const { return coordinate; }
+    const vector<Edge> &getEdges() const { return edges; }
+    void makeEdgeWith(Vertex &vertex);
+
+    bool operator!=(const Vertex &rhs) const {
+        return !(rhs == *this);
+    }
+
+    bool operator==(const Vertex &compare) const {
+        return this->getId() == compare.getId()
+               && this->getX() == compare.getX()
+               && this->getY() == compare.getY()
+               && this->getZ() == compare.getZ();
+    }
+};
+
 
 #endif //INC_3D_VIEWER_VERTEX_H
