@@ -3,6 +3,7 @@ project(3d_viewer)
 project(3d_viewer_tests)
 
 set(CMAKE_CXX_STANDARD 14)
+set(CMAKE_CXX_FLAGS "-Wall -Wextra -Werror")
 
 set(SOURCE_FILES
   src/object/vertex.cpp

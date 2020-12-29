@@ -5,11 +5,11 @@
 unsigned int TestCase::errorCount = 0;
 
 int main() {
-    TestCase *testCases[] = {
+    TestCase* testCases[] = {
         new VertexTest,
     };
 
-    for(auto &testCase : testCases) {
+    for(auto& testCase : testCases) {
         testCase->run();
         delete testCase;
     }

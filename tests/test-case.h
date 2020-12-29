@@ -25,7 +25,7 @@ public:
     }
 
 protected:
-    void test(bool expression, const string &message) const {
+    void test(bool expression, const string& message) const {
         if(expression)
             return;
 
@@ -33,11 +33,11 @@ protected:
         logError(message);
     }
 
-    void logError(const string &message) const {
+    void logError(const string& message) const {
         cout << "\x1b[1;31m" << getClassName() << ": " << message << "\x1b[0m" << endl;
     }
 
-    static void logSuccess(const string &message) {
+    static void logSuccess(const string& message) {
         cout << "\x1b[1;32m" << message << "\x1b[0m" << endl;
     }
 };

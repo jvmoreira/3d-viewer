@@ -1,37 +1,35 @@
+#include <algorithm>
 #include "vertex.h"
 
-void Vertex::makeEdgeWith(Vertex &vertex) {
-    Vertex &origin = this->resolveEdgeOrigin(vertex);
-    Vertex &destiny = this->resolveEdgeDestiny(vertex);
+void Vertex::makeEdgeWith(Vertex& vertex) {
+    Vertex& origin = resolveEdgeOrigin(vertex);
+    Vertex& destiny = resolveEdgeDestiny(vertex);
 
     origin.handleNewEdge(destiny);
 }
 
-void Vertex::handleNewEdge(Vertex &destiny) {
-    if(this->hasEdgeWith(destiny))
+void Vertex::handleNewEdge(Vertex& destiny) {
+    if(hasEdgeWith(destiny))
         return;
 
-    this->edges.push_back({ destiny });
+    edges.push_back({ destiny });
 }
 
-bool Vertex::hasEdgeWith(Vertex &destiny) const {
-    for(auto &edge : this->getEdges()) {
-        if (edge.vertex.getId() == destiny.getId())
-            return true;
-    }
-
-    return false;
+bool Vertex::hasEdgeWith(const Vertex& destiny) const {
+    return any_of(getEdges().cbegin(), getEdges().cend(), [destiny](Edge edge) {
+        return edge.vertex.getId() == destiny.getId();
+    });
 }
 
-Vertex &Vertex::resolveEdgeOrigin(Vertex &vertex)  {
-    if(vertex.getId() < this->getId())
+Vertex& Vertex::resolveEdgeOrigin(Vertex& vertex) {
+    if(vertex.getId() < getId())
         return vertex;
 
     return *this;
 }
 
-Vertex &Vertex::resolveEdgeDestiny(Vertex &vertex) {
-    if(this->getId() == resolveEdgeOrigin(vertex).getId())
+Vertex& Vertex::resolveEdgeDestiny(Vertex& vertex) {
+    if(getId() == resolveEdgeOrigin(vertex).getId())
         return vertex;
 
     return *this;

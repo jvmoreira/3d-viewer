@@ -18,7 +18,7 @@ void VertexTest::makeEdgeWithTest() const {
     Vertex origin(0, 0.0, 0.0, 0.0);
     Vertex destiny(1, 1.1, 1.2, 1.3);
     Vertex destiny2(2, 2.5, 1.6, 1.7);
-    auto &originEdges = origin.getEdges();
+    auto& originEdges = origin.getEdges();
 
     origin.makeEdgeWith(destiny);
     test(originEdges.size() == 1, "makeEdgeWith should create edge on origin vertex");
