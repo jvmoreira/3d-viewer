@@ -8,6 +8,8 @@ set(CMAKE_CXX_FLAGS "-Wall -Wextra -Werror")
 set(SOURCE_FILES
   src/object/vertex.cpp
   src/object/vertex.h
+  src/object/object.cpp
+  src/object/object.h
 )
 
 set(TESTS_FILES
@@ -15,6 +17,8 @@ set(TESTS_FILES
   tests/test-case.h
   tests/object/vertex-test.cpp
   tests/object/vertex-test.h
+  tests/object/object-test.cpp
+  tests/object/object-test.h
 )
 
 add_executable(3d_viewer
