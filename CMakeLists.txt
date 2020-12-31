@@ -10,6 +10,8 @@ set(SOURCE_FILES
   src/object/vertex.h
   src/object/object.cpp
   src/object/object.h
+  src/render.cpp
+  src/render.h
 )
 
 set(TESTS_FILES
@@ -31,4 +33,5 @@ add_executable(3d_viewer_tests
   ${SOURCE_FILES}
 )
 
+target_link_libraries(3d_viewer mingw32 SDL2main SDL2)
 target_include_directories(3d_viewer_tests PUBLIC src tests)
